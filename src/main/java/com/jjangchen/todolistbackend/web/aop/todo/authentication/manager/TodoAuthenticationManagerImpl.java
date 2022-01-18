@@ -10,7 +10,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Component
-public class ProviderManager implements TodoAuthenticationManger {
+public class TodoAuthenticationManagerImpl implements TodoAuthenticationManger {
     private final List<TodoAuthenticationProvider> providers;
 
     @Override

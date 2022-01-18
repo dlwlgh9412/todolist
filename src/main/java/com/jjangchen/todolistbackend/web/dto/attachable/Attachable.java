@@ -9,15 +9,15 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public interface Attachable {
-    TodoAttachmentWrapper getAttachmentWrapper();
+    TodoAttachmentWrapper getTodoAttachmentWrapper();
 
     default void attach(Map<? extends TodoAttachmentType, ? extends Attachment> attachment) {
-        getAttachmentWrapper().putAll(attachment);
+        getTodoAttachmentWrapper().putAll(attachment);
     }
 
     @JsonAnyGetter
     default Map<String, Object> getAttachment() {
-        TodoAttachmentWrapper wrapper = getAttachmentWrapper();
+        TodoAttachmentWrapper wrapper = getTodoAttachmentWrapper();
 
         if (wrapper.isEmpty())
             return null;

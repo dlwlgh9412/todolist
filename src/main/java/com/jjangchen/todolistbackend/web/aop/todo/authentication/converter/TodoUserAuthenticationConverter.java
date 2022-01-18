@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Component
 public class TodoUserAuthenticationConverter implements TodoAuthenticationConverter {
-    private final TodoAuthenticationHeaderList header = TodoAuthenticationHeaderList.DEFAULT;
+    private final TodoAuthenticationHeaderType header = TodoAuthenticationHeaderType.DEFAULT;
 
     @Override
     public TodoAuthentication convert(HttpServletRequest request) {
@@ -21,5 +21,10 @@ public class TodoUserAuthenticationConverter implements TodoAuthenticationConver
     @Override
     public String getHeader() {
         return this.header.value;
+    }
+
+    @Override
+    public boolean isSupport(Class<?> type) {
+        return HttpServletRequest.class.isAssignableFrom(type);
     }
 }
