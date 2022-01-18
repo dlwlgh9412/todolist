@@ -1,29 +1,40 @@
 package com.jjangchen.todolistbackend.entity;
 
-import com.jjangchen.todolistbackend.dto.TodoUpdateDto;
+import com.jjangchen.todolistbackend.web.dto.TodoUpdateDto;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
 @Entity
+@Table(name = "TBL_TODO")
 public class Todo {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String content;
 
     private LocalDateTime startTime;
 
-    public Todo(String content, LocalDateTime startTime) {
+    @OneToMany(mappedBy = "todo")
+    private List<TodoAttach> todoAttachList = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "WRITER")
+    private TodoAccount todoAccount;
+
+    @Builder
+    public Todo(String content, LocalDateTime startTime, TodoAccount todoAccount) {
         this.content = content;
         this.startTime = startTime;
+        this.todoAccount = todoAccount;
     }
 
     public Todo update(TodoUpdateDto updateDto) {
