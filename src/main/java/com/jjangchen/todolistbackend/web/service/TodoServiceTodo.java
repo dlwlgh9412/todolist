@@ -3,9 +3,9 @@ package com.jjangchen.todolistbackend.web.service;
 import com.jjangchen.todolistbackend.entity.TodoAccount;
 import com.jjangchen.todolistbackend.web.aop.todo.context.TodoAuthenticationContextHolder;
 import com.jjangchen.todolistbackend.web.dto.attach.Attachment;
-import com.jjangchen.todolistbackend.web.aop.attachment.AttachmentType;
-import com.jjangchen.todolistbackend.web.aop.attachment.SimpleAttachmentCollection;
-import com.jjangchen.todolistbackend.web.dto.attach.TodoAttachDto;
+import com.jjangchen.todolistbackend.web.aop.attachment.TodoAttachmentType;
+import com.jjangchen.todolistbackend.web.aop.attachment.TodoSimpleTodoAttachmentCollection;
+import com.jjangchen.todolistbackend.web.dto.attach.AttachDto;
 import com.jjangchen.todolistbackend.web.dto.attachable.TodoDto;
 import com.jjangchen.todolistbackend.web.dto.TodoSaveDto;
 import com.jjangchen.todolistbackend.web.dto.TodoUpdateDto;
@@ -22,8 +22,8 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class TodoService implements AttachService<TodoDto> {
-    private static final AttachmentType attachmentType = AttachmentType.TODO_ATTACH;
+public class TodoServiceTodo implements TodoAttachService<TodoDto> {
+    private static final TodoAttachmentType TODO_ATTACHMENT_TYPE = TodoAttachmentType.TODO_ATTACH;
     private static final Class<TodoDto> supportType = TodoDto.class;
     private final TodoRepository todoRepository;
     private final TodoAccountService accountService;
@@ -60,8 +60,8 @@ public class TodoService implements AttachService<TodoDto> {
     }
 
     @Override
-    public AttachmentType getSupportAttachmentType() {
-        return attachmentType;
+    public TodoAttachmentType getSupportAttachmentType() {
+        return TODO_ATTACHMENT_TYPE;
     }
 
     @Override
@@ -72,8 +72,8 @@ public class TodoService implements AttachService<TodoDto> {
     @Override
     public Attachment getAttachment(Object attachment) {
         TodoDto todoDto = supportType.cast(attachment);
-        return new SimpleAttachmentCollection<>(todoRepository.findById(todoDto.getId())
-                .orElseThrow().getTodoAttachList().stream().map(addon -> new TodoAttachDto(addon.getContent())).collect(Collectors.toList()));
+        return new TodoSimpleTodoAttachmentCollection<>(todoRepository.findById(todoDto.getId())
+                .orElseThrow().getTodoAttachList().stream().map(addon -> new AttachDto(addon.getContent())).collect(Collectors.toList()));
     }
 
     private TodoAccount loadUser() {

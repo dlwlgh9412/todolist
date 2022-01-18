@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TodoAttachDto implements Attachment {
+public class AttachDto implements Attachment {
     private String content;
 }

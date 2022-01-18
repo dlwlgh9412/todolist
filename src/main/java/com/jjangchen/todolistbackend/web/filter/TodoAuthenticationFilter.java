@@ -18,6 +18,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * 스프링 시큐리티의 사용자 인증과정을 간단하게 구현
+ */
+
 @Slf4j
 @RequiredArgsConstructor
 @Component

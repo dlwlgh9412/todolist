@@ -25,7 +25,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class TodoServiceTest {
     @InjectMocks
-    private TodoService todoService;
+    private TodoServiceTodo todoService;
 
     @Mock
     private TodoRepository todoRepository;

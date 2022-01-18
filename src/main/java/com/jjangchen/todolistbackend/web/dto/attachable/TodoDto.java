@@ -2,7 +2,7 @@ package com.jjangchen.todolistbackend.web.dto.attachable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.jjangchen.todolistbackend.web.aop.attachment.AttachmentWrapper;
+import com.jjangchen.todolistbackend.web.aop.attachment.TodoAttachmentWrapper;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -23,5 +23,5 @@ public class TodoDto implements Attachable {
 
     @Setter(AccessLevel.PRIVATE)
     @JsonIgnore
-    private AttachmentWrapper attachmentWrapper = new AttachmentWrapper();
+    private TodoAttachmentWrapper todoAttachmentWrapper = new TodoAttachmentWrapper();
 }

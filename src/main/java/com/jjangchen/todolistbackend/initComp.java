@@ -14,6 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Component
+/**
+ * 테스트용도
+ */
 public class initComp implements ApplicationRunner {
     private final TodoRepository todoRepository;
     private final TodoAttachRepository todoAttachRepository;

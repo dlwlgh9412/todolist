@@ -11,7 +11,7 @@ import java.util.Set;
 @Data
 @Component
 @RequestScope
-public class AttachmentTypeHolder {
+public class TodoAttachmentTypeHolder {
     @Delegate
-    private Set<AttachmentType> types;
+    private Set<TodoAttachmentType> types;
 }

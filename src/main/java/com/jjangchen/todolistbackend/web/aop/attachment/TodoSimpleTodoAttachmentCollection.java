@@ -5,11 +5,11 @@ import lombok.experimental.Delegate;
 
 import java.util.Collection;
 
-public class SimpleAttachmentCollection<T extends Attachment> implements AttachmentCollection<T> {
+public class TodoSimpleTodoAttachmentCollection<T extends Attachment> implements TodoAttachmentCollection<T> {
     @Delegate
     private final Collection<T> value;
 
-    public SimpleAttachmentCollection(Collection<T> value) {
+    public TodoSimpleTodoAttachmentCollection(Collection<T> value) {
         this.value = value;
     }
 }

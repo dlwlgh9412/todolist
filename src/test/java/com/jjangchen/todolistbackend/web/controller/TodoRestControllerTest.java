@@ -2,7 +2,7 @@ package com.jjangchen.todolistbackend.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jjangchen.todolistbackend.web.dto.TodoSaveDto;
-import com.jjangchen.todolistbackend.web.service.TodoService;
+import com.jjangchen.todolistbackend.web.service.TodoServiceTodo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -45,7 +45,7 @@ public class TodoRestControllerTest {
     private ObjectMapper objectMapper;
 
     @MockBean
-    private TodoService todoService;
+    private TodoServiceTodo todoService;
 
     private ManualRestDocumentation restDocumentation = new ManualRestDocumentation();
 

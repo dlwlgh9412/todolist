@@ -4,7 +4,7 @@ import com.jjangchen.todolistbackend.web.aop.attachment.Attach;
 import com.jjangchen.todolistbackend.web.aop.todo.context.TodoAuthenticationContextHolder;
 import com.jjangchen.todolistbackend.web.dto.attachable.TodoDto;
 import com.jjangchen.todolistbackend.web.dto.TodoSaveDto;
-import com.jjangchen.todolistbackend.web.service.TodoService;
+import com.jjangchen.todolistbackend.web.service.TodoServiceTodo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/todos")
 public class TodoRestController {
-    private final TodoService todoService;
+    private final TodoServiceTodo todoService;
 
     @GetMapping
     public ResponseEntity getTodoList() {

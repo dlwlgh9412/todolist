@@ -1,5 +1,5 @@
 package com.jjangchen.todolistbackend.web.aop.attachment;
 
-public enum AttachmentType {
+public enum TodoAttachmentType {
     TODO_ATTACH;
 }

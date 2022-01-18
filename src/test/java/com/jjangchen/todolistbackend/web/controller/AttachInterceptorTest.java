@@ -2,8 +2,8 @@ package com.jjangchen.todolistbackend.web.controller;
 
 import com.jjangchen.todolistbackend.web.aop.attachment.Attach;
 import com.jjangchen.todolistbackend.web.interceptor.AttachInterceptor;
-import com.jjangchen.todolistbackend.web.aop.attachment.AttachmentType;
-import com.jjangchen.todolistbackend.web.aop.attachment.AttachmentTypeHolder;
+import com.jjangchen.todolistbackend.web.aop.attachment.TodoAttachmentType;
+import com.jjangchen.todolistbackend.web.aop.attachment.TodoAttachmentTypeHolder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -24,7 +24,7 @@ public class AttachInterceptorTest {
     private AttachInterceptor attachInterceptor;
 
     @Spy
-    private AttachmentTypeHolder attachmentTypeHolder;
+    private TodoAttachmentTypeHolder todoAttachmentTypeHolder;
 
     @Mock
     private HandlerMethod handlerMethod;
@@ -38,11 +38,11 @@ public class AttachInterceptorTest {
     public void preHandler() {
         given(handlerMethod.hasMethodAnnotation(Attach.class)).willReturn(true);
         MockHttpServletRequest request = new MockHttpServletRequest();
-        request.setParameter(AttachInterceptor.TARGET_PARAMETER_NAME, AttachmentType.COMMENTS.name().toLowerCase());
+        request.setParameter(AttachInterceptor.TARGET_PARAMETER_NAME, TodoAttachmentType.COMMENTS.name().toLowerCase());
         MockHttpServletResponse response = new MockHttpServletResponse();
 
         attachInterceptor.preHandle(request, response, handlerMethod);
 
-        assertThat(attachmentTypeHolder.getTypes(), hasItem(AttachmentType.COMMENTS));
+        assertThat(todoAttachmentTypeHolder.getTypes(), hasItem(TodoAttachmentType.COMMENTS));
     }
 }
