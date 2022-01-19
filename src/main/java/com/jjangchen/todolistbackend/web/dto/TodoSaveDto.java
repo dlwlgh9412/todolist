@@ -2,6 +2,7 @@ package com.jjangchen.todolistbackend.web.dto;
 
 import com.jjangchen.todolistbackend.entity.TodoAccount;
 import com.jjangchen.todolistbackend.entity.Todo;
+import com.jjangchen.todolistbackend.web.aop.authentication.context.TodoAuthenticationContextHolder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,5 +19,10 @@ public class TodoSaveDto implements TodoRequestDto {
 
     public Todo toEntity() {
         return new Todo(content, startDate, todoAccount);
+    }
+
+    @Override
+    public void setUser(TodoAccount account) {
+        this.todoAccount = account;
     }
 }
