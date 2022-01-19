@@ -1,7 +1,5 @@
 package com.jjangchen.todolistbackend.web.service;
 
-import com.jjangchen.todolistbackend.entity.TodoAccount;
-import com.jjangchen.todolistbackend.web.aop.todo.context.TodoAuthenticationContextHolder;
 import com.jjangchen.todolistbackend.web.dto.attach.Attachment;
 import com.jjangchen.todolistbackend.web.aop.attachment.TodoAttachmentType;
 import com.jjangchen.todolistbackend.web.aop.attachment.TodoSimpleTodoAttachmentCollection;
@@ -29,7 +27,7 @@ public class TodoServiceTodo implements TodoAttachService<TodoDto> {
     private final TodoAccountService accountService;
 
     public List<TodoDto> findAllByUsername() {
-        return todoRepository.findAllByTodoAccount(loadUser()).stream().map(todo ->
+        return todoRepository.findAllByTodoAccount(accountService.loadAccount()).stream().map(todo ->
                         TodoDto.builder()
                                 .id(todo.getId())
                                 .content(todo.getContent())
@@ -74,9 +72,5 @@ public class TodoServiceTodo implements TodoAttachService<TodoDto> {
         TodoDto todoDto = supportType.cast(attachment);
         return new TodoSimpleTodoAttachmentCollection<>(todoRepository.findById(todoDto.getId())
                 .orElseThrow().getTodoAttachList().stream().map(addon -> new AttachDto(addon.getContent())).collect(Collectors.toList()));
-    }
-
-    private TodoAccount loadUser() {
-        return accountService.loadAccountByUsername(TodoAuthenticationContextHolder.getContext().getTodoAuthentication().getName());
     }
 }

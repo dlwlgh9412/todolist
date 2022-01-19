@@ -36,7 +36,7 @@ public class TodoAuthenticationContextHolder {
         strategy.setContext(context);
     }
 
-    public static TodoAuthenticationContext createEmptyContext() {
+    protected static TodoAuthenticationContext createEmptyContext() {
         return strategy.createEmptyContext();
     }
 }

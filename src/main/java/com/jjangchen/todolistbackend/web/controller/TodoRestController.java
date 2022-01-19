@@ -26,7 +26,6 @@ public class TodoRestController {
     @Attach
     @GetMapping("/{id}")
     public TodoDto getTodoOne(@PathVariable("id") Long id) {
-        log.info(TodoAuthenticationContextHolder.getContext().getTodoAuthentication().getName());
         return todoService.findOne(id);
     }
 

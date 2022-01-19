@@ -19,6 +19,7 @@ public class TodoThreadLocalAuthenticationContextHolderStrategy implements  Todo
             ctx = createEmptyContext();
             this.context.set(ctx);
         }
+
         return ctx;
     }
 

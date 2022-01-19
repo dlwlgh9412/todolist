@@ -39,13 +39,12 @@ public class TodoAuthenticationFilter extends OncePerRequestFilter {
         }
         successAuthenticate(authentication);
         filterChain.doFilter(request, response);
-
+        TodoAuthenticationContextHolder.clearContext();
     }
 
     private void successAuthenticate(TodoAuthentication authentication) {
         TodoAuthenticationContext authenticationContext = new TodoAuthenticationContextImpl(authentication);
         TodoAuthenticationContextHolder.setContext(authenticationContext);
-        return;
     }
 
     private TodoAuthentication attemptAuthenticate(HttpServletRequest request) {
