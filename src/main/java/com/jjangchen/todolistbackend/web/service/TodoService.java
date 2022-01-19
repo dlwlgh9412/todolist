@@ -12,6 +12,7 @@ import com.jjangchen.todolistbackend.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class TodoServiceTodo implements TodoAttachService<TodoDto> {
+public class TodoService implements TodoAttachService<TodoDto> {
     private static final TodoAttachmentType TODO_ATTACHMENT_TYPE = TodoAttachmentType.TODO_ATTACH;
     private static final Class<TodoDto> supportType = TodoDto.class;
     private final TodoRepository todoRepository;
@@ -28,33 +29,37 @@ public class TodoServiceTodo implements TodoAttachService<TodoDto> {
 
     public List<TodoDto> findAllByUsername() {
         return todoRepository.findAllByTodoAccount(accountService.loadAccount()).stream().map(todo ->
-                        TodoDto.builder()
-                                .id(todo.getId())
-                                .content(todo.getContent())
-                                .startTime(todo.getStartTime())
-                                .build())
+                        createTodoDto(todo))
                 .collect(Collectors.toList());
     }
 
     public TodoDto findOne(Long id) {
         Todo todo = todoRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return createTodoDto(todo);
+    }
+
+    @Transactional
+    public Long create(TodoSaveDto saveDto) {
+        return todoRepository.save(saveDto.toEntity()).getId();
+    }
+
+    @Transactional
+    public TodoDto update(Long id, TodoUpdateDto updateDto) {
+        Todo todo = todoRepository.findById(id).orElseThrow().update(updateDto, accountService.loadAccount());
+        return createTodoDto(todo);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        todoRepository.deleteById(id);
+    }
+
+    private TodoDto createTodoDto(Todo todo) {
         return TodoDto.builder()
                 .id(todo.getId())
                 .content(todo.getContent())
                 .startTime(todo.getStartTime())
                 .build();
-    }
-
-    public Long create(TodoSaveDto saveDto) {
-        return todoRepository.save(saveDto.toEntity()).getId();
-    }
-
-    public Todo update(TodoUpdateDto updateDto) {
-        return todoRepository.findById(updateDto.getId()).orElseThrow().update(updateDto);
-    }
-
-    public void delete(Long id) {
-        todoRepository.deleteById(id);
     }
 
     @Override
