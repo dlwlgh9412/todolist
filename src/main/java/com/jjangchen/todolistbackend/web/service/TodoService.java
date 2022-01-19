@@ -28,7 +28,7 @@ public class TodoService implements TodoAttachService<TodoDto> {
     private final TodoAccountService accountService;
 
     public List<TodoDto> findAllByUsername() {
-        return todoRepository.findAllByTodoAccount(accountService.loadAccount()).stream().map(todo ->
+        return todoRepository.findAllByTodoAccount(accountService.loadAccountByContext()).stream().map(todo ->
                         createTodoDto(todo))
                 .collect(Collectors.toList());
     }
@@ -40,12 +40,13 @@ public class TodoService implements TodoAttachService<TodoDto> {
 
     @Transactional
     public Long create(TodoSaveDto saveDto) {
+        log.info(saveDto.getTodoAccount().getUsername());
         return todoRepository.save(saveDto.toEntity()).getId();
     }
 
     @Transactional
     public TodoDto update(Long id, TodoUpdateDto updateDto) {
-        Todo todo = todoRepository.findById(id).orElseThrow().update(updateDto, accountService.loadAccount());
+        Todo todo = todoRepository.findById(id).orElseThrow().update(updateDto);
         return createTodoDto(todo);
     }
 
