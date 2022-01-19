@@ -19,12 +19,4 @@ public class TodoSaveDto implements TodoRequestDto {
     public Todo toEntity() {
         return new Todo(content, startDate, todoAccount);
     }
-
-    public TodoSaveDto(String content) {
-        this.content = content;
-    }
-
-    public TodoSaveDto(LocalDateTime startDate) {
-        this.startDate = startDate;
-    }
 }
