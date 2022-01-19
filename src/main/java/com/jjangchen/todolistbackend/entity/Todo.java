@@ -38,8 +38,8 @@ public class Todo {
         this.todoAccount = todoAccount;
     }
 
-    public Todo update(TodoUpdateDto updateDto, TodoAccount account) {
-        if(todoAccount != account)
+    public Todo update(TodoUpdateDto updateDto) {
+        if(todoAccount != updateDto.getAccount())
             throw new TodoAuthenticationResolverException("해당 작성자가 아닙니다!!");
         this.content = updateDto.getContent();
         this.startTime = updateDto.getStartTime();
