@@ -19,6 +19,6 @@ public class TodoAccountService {
     }
 
     public TodoAccount loadAccountByContext() {
-        return loadAccountByUsername(TodoAuthenticationContextHolder.getContext().getTodoAuthentication().getName());
+        return (TodoAccount) TodoAuthenticationContextHolder.getContext().getTodoAuthentication().getPrincipal();
     }
 }
