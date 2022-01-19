@@ -1,5 +1,6 @@
 package com.jjangchen.todolistbackend.entity;
 
+import com.jjangchen.todolistbackend.web.aop.todo.authentication.converter.TodoAuthenticationResolverException;
 import com.jjangchen.todolistbackend.web.dto.TodoUpdateDto;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,7 +38,9 @@ public class Todo {
         this.todoAccount = todoAccount;
     }
 
-    public Todo update(TodoUpdateDto updateDto) {
+    public Todo update(TodoUpdateDto updateDto, TodoAccount account) {
+        if(todoAccount != account)
+            throw new TodoAuthenticationResolverException("해당 작성자가 아닙니다!!");
         this.content = updateDto.getContent();
         this.startTime = updateDto.getStartTime();
 
