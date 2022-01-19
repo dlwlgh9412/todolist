@@ -49,6 +49,8 @@ public class TodoAuthenticationFilter extends OncePerRequestFilter {
 
     private TodoAuthentication attemptAuthenticate(HttpServletRequest request) {
         TodoAuthenticationConverter converter = converterResolver.resolve(request);
+        if(converter == null)
+            return null;
         TodoAuthentication authentication = converter.convert(request);
         if (authentication == null)
             return null;
