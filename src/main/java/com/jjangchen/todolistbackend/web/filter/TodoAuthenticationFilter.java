@@ -1,12 +1,12 @@
 package com.jjangchen.todolistbackend.web.filter;
 
-import com.jjangchen.todolistbackend.web.aop.todo.authentication.TodoAuthentication;
-import com.jjangchen.todolistbackend.web.aop.todo.authentication.converter.TodoAuthenticationConverter;
-import com.jjangchen.todolistbackend.web.aop.todo.authentication.converter.TodoAuthenticationConverterResolver;
-import com.jjangchen.todolistbackend.web.aop.todo.authentication.manager.TodoAuthenticationManger;
-import com.jjangchen.todolistbackend.web.aop.todo.context.TodoAuthenticationContext;
-import com.jjangchen.todolistbackend.web.aop.todo.context.TodoAuthenticationContextHolder;
-import com.jjangchen.todolistbackend.web.aop.todo.context.TodoAuthenticationContextImpl;
+import com.jjangchen.todolistbackend.web.aop.authentication.TodoAuthentication;
+import com.jjangchen.todolistbackend.web.aop.authentication.converter.TodoAuthenticationConverter;
+import com.jjangchen.todolistbackend.web.aop.authentication.converter.TodoAuthenticationConverterResolver;
+import com.jjangchen.todolistbackend.web.aop.authentication.manager.TodoAuthenticationManger;
+import com.jjangchen.todolistbackend.web.aop.authentication.context.TodoAuthenticationContext;
+import com.jjangchen.todolistbackend.web.aop.authentication.context.TodoAuthenticationContextHolder;
+import com.jjangchen.todolistbackend.web.aop.authentication.context.TodoAuthenticationContextImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

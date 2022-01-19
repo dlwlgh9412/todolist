@@ -1,6 +1,6 @@
 package com.jjangchen.todolistbackend.entity;
 
-import com.jjangchen.todolistbackend.web.aop.todo.authority.TodoGrantedAuthority;
+import com.jjangchen.todolistbackend.web.aop.authentication.authority.TodoGrantedAuthority;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
