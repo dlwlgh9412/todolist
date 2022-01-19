@@ -18,7 +18,7 @@ public class TodoAccountService {
         return todoAccountRepository.findByUsername(name).orElseThrow(TodoAccountNotFoundException::new);
     }
 
-    protected TodoAccount loadAccount() {
+    public TodoAccount loadAccountByContext() {
         return loadAccountByUsername(TodoAuthenticationContextHolder.getContext().getTodoAuthentication().getName());
     }
 }
