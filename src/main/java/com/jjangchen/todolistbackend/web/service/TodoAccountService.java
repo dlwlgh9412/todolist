@@ -21,4 +21,12 @@ public class TodoAccountService {
     public TodoAccount loadAccountByContext() {
         return (TodoAccount) TodoAuthenticationContextHolder.getContext().getTodoAuthentication().getPrincipal();
     }
+
+    public String createAccount(String name) {
+        return todoAccountRepository.save(new TodoAccount(name)).getUsername();
+    }
+
+    public void deleteAccount() {
+        todoAccountRepository.delete(loadAccountByContext());
+    }
 }
