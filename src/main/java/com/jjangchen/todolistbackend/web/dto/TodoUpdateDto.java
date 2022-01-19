@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 public class TodoUpdateDto implements TodoRequestDto {
-    private Long id;
     private String content;
     private LocalDateTime startTime;
 
