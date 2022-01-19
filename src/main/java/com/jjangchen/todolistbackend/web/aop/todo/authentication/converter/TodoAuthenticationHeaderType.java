@@ -2,6 +2,7 @@ package com.jjangchen.todolistbackend.web.aop.todo.authentication.converter;
 
 public enum TodoAuthenticationHeaderType {
     DEFAULT("authorization");
+
     public String value;
 
     TodoAuthenticationHeaderType(String value) {
