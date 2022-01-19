@@ -1,10 +1,10 @@
 package com.jjangchen.todolistbackend.web.controller;
 
 import com.jjangchen.todolistbackend.web.aop.attachment.Attach;
-import com.jjangchen.todolistbackend.web.aop.todo.context.TodoAuthenticationContextHolder;
+import com.jjangchen.todolistbackend.web.dto.TodoUpdateDto;
 import com.jjangchen.todolistbackend.web.dto.attachable.TodoDto;
 import com.jjangchen.todolistbackend.web.dto.TodoSaveDto;
-import com.jjangchen.todolistbackend.web.service.TodoServiceTodo;
+import com.jjangchen.todolistbackend.web.service.TodoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/todos")
 public class TodoRestController {
-    private final TodoServiceTodo todoService;
+    private final TodoService todoService;
 
     @GetMapping
     public ResponseEntity getTodoList() {
@@ -30,7 +30,18 @@ public class TodoRestController {
     }
 
     @PostMapping
-    public Long create(@RequestBody TodoSaveDto saveDto) {
+    public Long createTodo(@RequestBody TodoSaveDto saveDto) {
         return todoService.create(saveDto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTodo(@PathVariable("id") Long id) {
+        todoService.delete(id);
+    }
+
+    @Attach
+    @PutMapping("/{id}")
+    public TodoDto updateTodo(@PathVariable("id") Long id, @RequestBody TodoUpdateDto updateDto) {
+        return todoService.update(id, updateDto);
     }
 }
