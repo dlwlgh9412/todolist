@@ -29,7 +29,7 @@ public class TodoAuthenticationFilter extends OncePerRequestFilter {
     private final TodoAuthenticationConverterResolver converterResolver;
 
     private final TodoAuthenticationManger authenticationManger;
-
+    // TODO: URL별 처리
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         TodoAuthentication authentication = attemptAuthenticate(request);
