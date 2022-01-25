@@ -1,2 +1,11 @@
-POST http://localhost:8080/oauth/token
-Authorize: fdjsklf3fj90sgh833
+###
+GET http://localhost:8081/todos/
+Authorization: jjang
+
+###
+GET http://localhost:8081/todos/1
+Authorization: jjang
+
+###
+POST http://localhost:8081/social/login
+Authorization: KAKAO_dfdsafda

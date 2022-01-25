@@ -1,6 +1,6 @@
 package com.jjangchen.todolistbackend.entity;
 
-import com.jjangchen.todolistbackend.web.aop.authentication.converter.TodoAuthenticationResolverException;
+import com.jjangchen.todolistbackend.web.filter.converter.authentication.TodoAuthenticationResolverException;
 import com.jjangchen.todolistbackend.web.dto.TodoUpdateDto;
 import lombok.Builder;
 import lombok.Getter;

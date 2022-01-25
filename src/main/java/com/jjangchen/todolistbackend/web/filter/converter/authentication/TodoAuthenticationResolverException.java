@@ -1,4 +1,4 @@
-package com.jjangchen.todolistbackend.web.aop.authentication.converter;
+package com.jjangchen.todolistbackend.web.filter.converter.authentication;
 
 import com.jjangchen.todolistbackend.exception.TodoException;
 
