@@ -7,7 +7,7 @@ plugins {
 
 group = 'com.jjangchen'
 version = '0.5'
-sourceCompatibility = '11'
+sourceCompatibility = '14'
 
 configurations {
     compileOnly {

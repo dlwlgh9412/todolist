@@ -36,7 +36,7 @@ public class TodoAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-        excludeUrlPatterns.add("/social/*");
+        excludeUrlPatterns.add("/oauth2/login");
         return excludeUrlPatterns.stream()
                 .anyMatch(p -> pathMatcher.match(p, request.getServletPath()));
     }

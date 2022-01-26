@@ -1,8 +1,8 @@
 package com.jjangchen.todolistbackend.web.resolver;
 
 import com.jjangchen.todolistbackend.enums.TodoSocialType;
-import com.jjangchen.todolistbackend.web.client.social.model.TodoSocialRequestAuthorization;
-import com.jjangchen.todolistbackend.web.client.social.model.TodoSocialRequestSeparator;
+import com.jjangchen.todolistbackend.web.client.oauth2.model.TodoSocialRequestAuthorization;
+import com.jjangchen.todolistbackend.web.client.oauth2.model.TodoSocialRequestSeparator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 
 @RequiredArgsConstructor
-public class TodoSocialMethodArgumentResolver implements HandlerMethodArgumentResolver {
+public class TodoOauth2MethodArgumentResolver implements HandlerMethodArgumentResolver {
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {

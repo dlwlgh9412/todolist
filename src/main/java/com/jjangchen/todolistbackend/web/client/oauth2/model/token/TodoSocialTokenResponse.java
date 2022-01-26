@@ -1,4 +1,4 @@
-package com.jjangchen.todolistbackend.web.client.social.model.token;
+package com.jjangchen.todolistbackend.web.client.oauth2.model.token;
 
 public interface TodoSocialTokenResponse {
     String getTokenType();

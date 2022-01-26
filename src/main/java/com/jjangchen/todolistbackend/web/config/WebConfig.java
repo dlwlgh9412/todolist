@@ -1,7 +1,7 @@
 package com.jjangchen.todolistbackend.web.config;
 
 import com.jjangchen.todolistbackend.web.interceptor.AttachInterceptor;
-import com.jjangchen.todolistbackend.web.resolver.TodoSocialMethodArgumentResolver;
+import com.jjangchen.todolistbackend.web.resolver.TodoOauth2MethodArgumentResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -28,6 +28,6 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-        resolvers.add(new TodoSocialMethodArgumentResolver());
+        resolvers.add(new TodoOauth2MethodArgumentResolver());
     }
 }

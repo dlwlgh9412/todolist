@@ -1,4 +1,4 @@
-package com.jjangchen.todolistbackend.web.client.social.model;
+package com.jjangchen.todolistbackend.web.client.oauth2.model;
 
 public enum TodoSocialRequestSeparator {
     UNDER_BAR("_");

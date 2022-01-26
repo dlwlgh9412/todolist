@@ -1,8 +1,8 @@
-package com.jjangchen.todolistbackend.web.client.social;
+package com.jjangchen.todolistbackend.web.client.oauth2;
 
 import com.jjangchen.todolistbackend.enums.TodoSocialType;
-import com.jjangchen.todolistbackend.web.client.social.model.token.TodoKakaoTokenResponse;
-import com.jjangchen.todolistbackend.web.client.social.model.token.TodoSocialTokenResponse;
+import com.jjangchen.todolistbackend.web.client.oauth2.model.token.TodoKakaoTokenResponse;
+import com.jjangchen.todolistbackend.web.client.oauth2.model.token.TodoSocialTokenResponse;
 import com.jjangchen.todolistbackend.web.properties.SocialParameterProperties;
 import com.jjangchen.todolistbackend.web.properties.UrlProperties;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +13,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 
 @Slf4j
 @Component
-public class TodoKakaoRestClientStrategy extends TodoAbstractSocialRestClientStrategy {
+public class TodoKakaoRestClientStrategy extends TodoAbstractOauth2RestClientStrategy {
     private final WebClient authClient;
     private final WebClient apiClient;
     private final SocialParameterProperties parameterProperties;
