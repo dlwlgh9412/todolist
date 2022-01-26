@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class TodoSocialRequestAuthorization {
+public class TodoOauth2RequestAuthorization {
     private final TodoSocialType social;
     private final String code;
 }

@@ -1,4 +1,4 @@
-package com.jjangchen.todolistbackend.web.client.oauth2.model.token;
+package com.jjangchen.todolistbackend.web.client.oauth2.model.auth.token;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class TodoKakaoTokenResponse implements TodoSocialTokenResponse {
+public class KakaoToken implements TodoOauth2Token {
     // bearer
     @JsonProperty("token_type")
     private String tokenType;

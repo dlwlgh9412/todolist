@@ -1,11 +1,11 @@
 package com.jjangchen.todolistbackend.web.client.oauth2.model;
 
-public enum TodoSocialRequestSeparator {
+public enum TodoOauth2RequestSeparator {
     UNDER_BAR("_");
 
     private String separator;
 
-    TodoSocialRequestSeparator(String separator) {
+    TodoOauth2RequestSeparator(String separator) {
         this.separator = separator;
     }
 
