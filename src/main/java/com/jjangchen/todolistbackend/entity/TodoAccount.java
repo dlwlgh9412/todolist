@@ -1,13 +1,11 @@
 package com.jjangchen.todolistbackend.entity;
 
-import com.jjangchen.todolistbackend.web.aop.authentication.authority.TodoGrantedAuthority;
+import com.jjangchen.todolistbackend.enums.TodoSocialType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Getter
 @NoArgsConstructor
@@ -18,16 +16,25 @@ public class TodoAccount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uid;
 
-    @Column(unique = true)
-    private String username;
+    @Column(nullable = false)
+    private String id;
+
+    private String nickname;
+
+    private String profileImageUrl;
+
+    private String email;
+
+    @Enumerated(EnumType.STRING)
+    private TodoSocialType socialType;
 
     @OneToMany(mappedBy = "todoAccount")
     private List<Todo> todoList;
 
-    @Transient
-    private Set<TodoGrantedAuthority> authorities = new HashSet<>();
+//    @Transient
+//    private Set<TodoGrantedAuthority> authorities = new HashSet<>();
 
-    public TodoAccount(String username) {
-        this.username = username;
+    public TodoAccount(String id) {
+        this.id = id;
     }
 }
