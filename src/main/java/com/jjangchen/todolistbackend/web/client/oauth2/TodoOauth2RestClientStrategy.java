@@ -1,7 +1,7 @@
 package com.jjangchen.todolistbackend.web.client.oauth2;
 
-import com.jjangchen.todolistbackend.web.client.oauth2.model.token.TodoSocialTokenResponse;
+import com.jjangchen.todolistbackend.web.client.oauth2.model.auth.token.TodoOauth2Token;
 
 public interface TodoOauth2RestClientStrategy {
-    TodoSocialTokenResponse loadToken(String code);
+    TodoOauth2Token loadToken(String code);
 }

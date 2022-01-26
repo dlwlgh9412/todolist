@@ -1,10 +1,9 @@
 package com.jjangchen.todolistbackend.web.controller;
 
-import com.jjangchen.todolistbackend.web.client.oauth2.model.TodoSocialRequestAuthorization;
+import com.jjangchen.todolistbackend.web.client.oauth2.model.TodoOauth2RequestAuthorization;
 import com.jjangchen.todolistbackend.web.service.TodoOauth2Service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +21,7 @@ public class TodoOauth2Controller {
      * @return
      */
     @PostMapping("/login")
-    public TodoSocialRequestAuthorization loadToken(TodoSocialRequestAuthorization authorization) {
+    public TodoOauth2RequestAuthorization loadToken(TodoOauth2RequestAuthorization authorization) {
         socialService.attemptLogin(authorization);
         // 임시 리턴 값
         return authorization;

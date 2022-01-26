@@ -2,8 +2,8 @@ package com.jjangchen.todolistbackend.web.service;
 
 import com.jjangchen.todolistbackend.web.client.oauth2.TodoOauth2RestClientResolver;
 import com.jjangchen.todolistbackend.web.client.oauth2.TodoOauth2RestClientStrategy;
-import com.jjangchen.todolistbackend.web.client.oauth2.model.TodoSocialRequestAuthorization;
-import com.jjangchen.todolistbackend.web.client.oauth2.model.token.TodoSocialTokenResponse;
+import com.jjangchen.todolistbackend.web.client.oauth2.model.TodoOauth2RequestAuthorization;
+import com.jjangchen.todolistbackend.web.client.oauth2.model.auth.token.TodoOauth2Token;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,18 +15,14 @@ public class TodoOauth2Service {
     private final TodoOauth2RestClientResolver todoOauth2RestClientResolver;
     private TodoOauth2RestClientStrategy restClient;
 
-    public void attemptLogin(TodoSocialRequestAuthorization authorization) {
-        TodoSocialTokenResponse token = requestSocialToken(authorization);
+    public void attemptLogin(TodoOauth2RequestAuthorization authorization) {
+        TodoOauth2Token token = requestSocialToken(authorization);
     }
 
-    private void validToken
-
-    private TodoSocialTokenResponse requestSocialToken(TodoSocialRequestAuthorization authorization) {
+    private TodoOauth2Token requestSocialToken(TodoOauth2RequestAuthorization authorization) {
         restClient = todoOauth2RestClientResolver.resolve(authorization.getSocial());
         return restClient.loadToken(authorization.getCode());
     }
 
-    public void expireSocialToken() {
-        restClient = todoOauth2RestClientResolver.resolve();
-    }
+
 }

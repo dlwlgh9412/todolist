@@ -1,8 +1,8 @@
 package com.jjangchen.todolistbackend.web.client.oauth2;
 
 import com.jjangchen.todolistbackend.enums.TodoSocialType;
-import com.jjangchen.todolistbackend.web.client.oauth2.model.token.TodoKakaoTokenResponse;
-import com.jjangchen.todolistbackend.web.client.oauth2.model.token.TodoSocialTokenResponse;
+import com.jjangchen.todolistbackend.web.client.oauth2.model.auth.token.KakaoToken;
+import com.jjangchen.todolistbackend.web.client.oauth2.model.auth.token.TodoOauth2Token;
 import com.jjangchen.todolistbackend.web.properties.SocialParameterProperties;
 import com.jjangchen.todolistbackend.web.properties.UrlProperties;
 import lombok.extern.slf4j.Slf4j;
@@ -30,8 +30,8 @@ public class TodoKakaoRestClientStrategy extends TodoAbstractOauth2RestClientStr
     }
 
     @Override
-    public TodoSocialTokenResponse loadToken(String code) {
-        TodoKakaoTokenResponse token = null;
+    public TodoOauth2Token loadToken(String code) {
+        KakaoToken token = null;
         try {
             token = authClient.post()
                     .uri(uriBuilder -> uriBuilder.path("/oauth/token")
@@ -42,7 +42,7 @@ public class TodoKakaoRestClientStrategy extends TodoAbstractOauth2RestClientStr
                             .queryParam("client_secret", parameterProperties.getKakaoClientSecret())
                             .build())
                     .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                    .retrieve().bodyToMono(TodoKakaoTokenResponse.class).block();
+                    .retrieve().bodyToMono(KakaoToken.class).block();
         } catch (WebClientResponseException e) {
             log.error(e.getResponseBodyAsString());
         }

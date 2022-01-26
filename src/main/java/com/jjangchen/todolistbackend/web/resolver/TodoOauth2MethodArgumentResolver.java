@@ -1,8 +1,8 @@
 package com.jjangchen.todolistbackend.web.resolver;
 
 import com.jjangchen.todolistbackend.enums.TodoSocialType;
-import com.jjangchen.todolistbackend.web.client.oauth2.model.TodoSocialRequestAuthorization;
-import com.jjangchen.todolistbackend.web.client.oauth2.model.TodoSocialRequestSeparator;
+import com.jjangchen.todolistbackend.web.client.oauth2.model.TodoOauth2RequestAuthorization;
+import com.jjangchen.todolistbackend.web.client.oauth2.model.TodoOauth2RequestSeparator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -18,7 +18,7 @@ public class TodoOauth2MethodArgumentResolver implements HandlerMethodArgumentRe
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.getParameterType() == TodoSocialRequestAuthorization.class;
+        return parameter.getParameterType() == TodoOauth2RequestAuthorization.class;
     }
 
     @Override
@@ -28,9 +28,9 @@ public class TodoOauth2MethodArgumentResolver implements HandlerMethodArgumentRe
     }
 
 
-    private TodoSocialRequestAuthorization convertToSocialAuthorization(HttpServletRequest request) {
+    private TodoOauth2RequestAuthorization convertToSocialAuthorization(HttpServletRequest request) {
         String authorization = request.getHeader("Authorization");
-        String[] result = authorization.split(TodoSocialRequestSeparator.UNDER_BAR.getSeparator());
-        return new TodoSocialRequestAuthorization(TodoSocialType.valueOf(result[0].toUpperCase(Locale.ROOT)), result[1]);
+        String[] result = authorization.split(TodoOauth2RequestSeparator.UNDER_BAR.getSeparator());
+        return new TodoOauth2RequestAuthorization(TodoSocialType.valueOf(result[0].toUpperCase(Locale.ROOT)), result[1]);
     }
 }
