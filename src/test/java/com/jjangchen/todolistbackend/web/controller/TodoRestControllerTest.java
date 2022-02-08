@@ -65,7 +65,7 @@ public class TodoRestControllerTest {
         this.restDocumentation.afterTest();
     }
 
-    @Test
+/*    @Test
     void TODO_생성요청() throws Exception {
         TodoSaveDto todoSaveDto = new TodoSaveDto("해야할 것");
         when(todoService.create(todoSaveDto)).thenReturn(anyLong());
@@ -88,5 +88,5 @@ public class TodoRestControllerTest {
 
         assertEquals("0", responseBody);
 
-    }
+    }*/
 }

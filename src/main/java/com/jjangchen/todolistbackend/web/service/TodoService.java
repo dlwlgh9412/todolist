@@ -40,7 +40,6 @@ public class TodoService implements TodoAttachService<TodoDto> {
 
     @Transactional
     public Long create(TodoSaveDto saveDto) {
-        log.info(saveDto.getTodoAccount().getUsername());
         return todoRepository.save(saveDto.toEntity()).getId();
     }
 

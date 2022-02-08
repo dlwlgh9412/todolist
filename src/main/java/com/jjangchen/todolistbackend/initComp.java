@@ -25,7 +25,7 @@ public class initComp implements ApplicationRunner {
     @Transactional
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        TodoAccount account = new TodoAccount("jjang");
+/*        TodoAccount account = new TodoAccount("jjang");
         TodoAccount acccount2 = new TodoAccount("jjangchen");
         account = accountRepository.save(account);
         acccount2 = accountRepository.save(acccount2);
@@ -51,6 +51,6 @@ public class initComp implements ApplicationRunner {
         TodoAttach todoAttach2 = new TodoAttach("bbbbbbb", todo);
 
         todoAttachRepository.save(todoAttach);
-        todoAttachRepository.save(todoAttach2);
+        todoAttachRepository.save(todoAttach2);*/
     }
 }

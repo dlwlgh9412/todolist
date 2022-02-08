@@ -34,7 +34,7 @@ public class AttachInterceptorTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Test
+/*    @Test
     public void preHandler() {
         given(handlerMethod.hasMethodAnnotation(Attach.class)).willReturn(true);
         MockHttpServletRequest request = new MockHttpServletRequest();
@@ -44,5 +44,5 @@ public class AttachInterceptorTest {
         attachInterceptor.preHandle(request, response, handlerMethod);
 
         assertThat(todoAttachmentTypeHolder.getTypes(), hasItem(TodoAttachmentType.COMMENTS));
-    }
+    }*/
 }

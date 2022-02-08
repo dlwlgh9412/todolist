@@ -1,6 +1,6 @@
 package com.jjangchen.todolistbackend.entity;
 
-import com.jjangchen.todolistbackend.enums.TodoSocialType;
+import com.jjangchen.todolistbackend.enums.TodoOauthType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +17,7 @@ public class TodoAccount {
     private Long uid;
 
     @Column(nullable = false)
-    private String id;
+    private Long id;
 
     private String nickname;
 
@@ -26,15 +26,15 @@ public class TodoAccount {
     private String email;
 
     @Enumerated(EnumType.STRING)
-    private TodoSocialType socialType;
+    private TodoOauthType socialType;
 
-    @OneToMany(mappedBy = "todoAccount")
+    @OneToMany(targetEntity = Todo.class)
     private List<Todo> todoList;
 
 //    @Transient
 //    private Set<TodoGrantedAuthority> authorities = new HashSet<>();
 
-    public TodoAccount(String id) {
+    public TodoAccount(Long id) {
         this.id = id;
     }
 }

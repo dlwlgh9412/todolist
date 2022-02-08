@@ -1,6 +1,6 @@
-package com.jjangchen.todolistbackend.web.client.oauth2.model.auth.token;
+package com.jjangchen.todolistbackend.web.dto.oauth.auth.token;
 
-public interface TodoOauth2Token {
+public interface TodoOauthAuthResponse {
     String getTokenType();
     String getAccessToken();
     String getRefreshToken();

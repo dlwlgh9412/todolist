@@ -1,7 +1,7 @@
 package com.jjangchen.todolistbackend.web.config;
 
 import com.jjangchen.todolistbackend.web.interceptor.AttachInterceptor;
-import com.jjangchen.todolistbackend.web.resolver.TodoOauth2MethodArgumentResolver;
+import com.jjangchen.todolistbackend.web.resolver.TodoOauthRequestMethodArgumentResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -26,8 +26,8 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(attachInterceptor).addPathPatterns("/todos/*");
     }
 
-    @Override
+/*    @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-        resolvers.add(new TodoOauth2MethodArgumentResolver());
-    }
+        resolvers.add(new TodoOauthRequestMethodArgumentResolver());
+    }*/
 }

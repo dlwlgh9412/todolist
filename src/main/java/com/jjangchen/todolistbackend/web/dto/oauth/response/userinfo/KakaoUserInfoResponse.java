@@ -1,4 +1,4 @@
-package com.jjangchen.todolistbackend.web.client.oauth2.model.api.userinfo;
+package com.jjangchen.todolistbackend.web.dto.oauth.response.userinfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -8,10 +8,10 @@ import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
-public class KakaoUserInfo implements TodoOauth2UserInfo {
+public abstract class KakaoUserInfoResponse implements TodoOauthUserInfoResponse {
     // 회원번호
     @JsonProperty("id")
-    private String id;
+    private Long id;
 
     // 자동연결설정을 비활성화 한 경우에 존재
     // false: 연결대기상태
@@ -27,28 +27,12 @@ public class KakaoUserInfo implements TodoOauth2UserInfo {
     @JsonProperty("synched_at")
     private LocalDateTime synchedAt;
 
-    @JsonProperty("properties")
-    private KakaoUserProperties userProperties;
-
     @JsonProperty("kakao_account")
-    private KakaoAccountInfo accountInfo;
+    private KakaoAccountInfoResponse accountInfo;
 
     @Getter
     @NoArgsConstructor
-    private class KakaoUserProperties implements TodoOauth2UserProperties {
-        @JsonProperty("properties.nickname")
-        private String nickname;
-
-        @JsonProperty("properties.profile_image")
-        private String profileImage;
-
-        @JsonProperty("properties.thumbnail_image")
-        private String thumbnailImage;
-    }
-
-    @Getter
-    @NoArgsConstructor
-    private class KakaoAccountInfo implements TodoOauth2AccountInfo {
+    private abstract class KakaoAccountInfoResponse extends KakaoUserInfoResponse {
         // 사용자 프로필정보 제공가능 여부
         @JsonProperty("profile_needs_agreement")
         private Boolean profileNeedsAgreement;
@@ -90,12 +74,9 @@ public class KakaoUserInfo implements TodoOauth2UserInfo {
 
         @Getter
         @NoArgsConstructor
-        private class KakaoProfile {
+        private class KakaoProfile extends KakaoAccountInfoResponse {
             @JsonProperty("nickname")
             private String nickname;
-
-            @JsonProperty("thumbnail_image_url")
-            private String thumbnailImageUrl;
 
             @JsonProperty("profile_image_url")
             private String profileImageUrl;

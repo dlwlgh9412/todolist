@@ -1,5 +1,5 @@
 package com.jjangchen.todolistbackend.enums;
 
-public enum TodoSocialType {
+public enum TodoOauthType {
     KAKAO, NAVER;
 }

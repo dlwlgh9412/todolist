@@ -24,10 +24,10 @@ public class Todo {
 
     private LocalDateTime startTime;
 
-    @OneToMany(mappedBy = "todo")
+    @OneToMany(targetEntity = TodoAttach.class, mappedBy = "todo")
     private List<TodoAttach> todoAttachList = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(targetEntity = TodoAccount.class)
     @JoinColumn(name = "WRITER")
     private TodoAccount todoAccount;
 

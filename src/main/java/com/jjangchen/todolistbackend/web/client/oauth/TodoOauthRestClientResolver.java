@@ -1,6 +1,6 @@
-package com.jjangchen.todolistbackend.web.client.oauth2;
+package com.jjangchen.todolistbackend.web.client.oauth;
 
-import com.jjangchen.todolistbackend.enums.TodoSocialType;
+import com.jjangchen.todolistbackend.enums.TodoOauthType;
 import com.jjangchen.todolistbackend.exception.TodoSocialTypeException;
 import com.jjangchen.todolistbackend.web.client.exception.TodoRestClientStrategyException;
 import lombok.RequiredArgsConstructor;
@@ -8,16 +8,19 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * Factory클래스 사용으로 인해 미사용
+ */
 @RequiredArgsConstructor
 @Component
-public class TodoOauth2RestClientResolver {
-    private final List<TodoAbstractOauth2RestClientStrategy> restClientList;
+public class TodoOauthRestClientResolver {
+    private final List<TodoAbstractOauthRestClient> restClientList;
 
-    public TodoAbstractOauth2RestClientStrategy resolve(TodoSocialType socialType) {
+    public TodoAbstractOauthRestClient resolve(TodoOauthType socialType) {
         if(socialType == null)
             throw new TodoSocialTypeException();
 
-        for(TodoAbstractOauth2RestClientStrategy restClient : restClientList) {
+        for(TodoAbstractOauthRestClient restClient : restClientList) {
             restClient.isSupport(socialType);
             return restClient;
         }

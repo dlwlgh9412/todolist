@@ -36,7 +36,7 @@ public abstract class TodoAbstractAuthentication implements TodoAuthentication {
     @Override
     public String getName() {
         if (this.getPrincipal() instanceof TodoAccount)
-            return ((TodoAccount) this.getPrincipal()).getUsername();
+            return ((TodoAccount) this.getPrincipal()).getNickname();
         if (this.getPrincipal() instanceof TodoPrincipal) {
             return ((TodoPrincipal) this.getPrincipal()).getName();
         }
